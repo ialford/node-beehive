@@ -20,34 +20,20 @@ injectTapEventPlugin();
 let Router = require('react-router'); // or let Router = ReactRouter; in browsers
 let MuiThemeMixin = require('./components/material-ui/MuiThemeMixin');
 
-let TestPage = require('./components/pages/TestPage');
-let PageToo = require('./components/pages/PageToo');
+let HomePage = require('./components/pages/HomePage');
+let CollectionPage = require('./components/pages/CollectionPage');
+
+
 
 let DefaultRoute = Router.DefaultRoute;
 let Link = Router.Link;
 let Route = Router.Route;
 let RouteHandler = Router.RouteHandler;
 
-let App = React.createClass({
-  mixins: [MuiThemeMixin],
-  render: function () {
-    return (
-      <div>
-        <h1>Super Site</h1>
-        <Router.Link to="testpage">Page 1</Router.Link>
-        <Router.Link to="pagetoo">Page 2</Router.Link>
-        <div>
-          <RouteHandler/>
-        </div>
-      </div>
-    );
-  },
-});
-
 let routes = (
-  <Route name="app" path="/" handler={App}>
-    <Route name="testpage" handler={TestPage} ignoreScrollBehavior={true} />
-    <Route name="pagetoo" handler={PageToo} ignoreScrollBehavior={true} />
+  <Route>
+    <Route name="collections" path="/" handler={HomePage} />
+    <Route name="collection" path="/collections/:id" handler={CollectionPage} />
   </Route>
 );
 
