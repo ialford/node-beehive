@@ -1,0 +1,52 @@
+{
+  "name": "todomvc-flux",
+  "version": "0.0.3",
+  "description": "Example Flux architecture.",
+  "repository": "https://github.com/facebook/flux",
+  "main": "js/app.js",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "classnames": "^2.1.3",
+    "fastclick": "^1.0.6",
+    "flux": "^2.0.1",
+    "keymirror": "~0.1.0",
+    "marked": "^0.3.5",
+    "material-ui": "^0.11.0",
+    "object-assign": "^1.0.0",
+    "react": "^0.13.0",
+    "react-router": "^0.13.3",
+    "react-tap-event-plugin": "^0.1.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.1",
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "es6ify": "^1.6.0",
+    "eslint": "^1.3.1",
+    "eslint-plugin-react": "^3.3.1",
+    "http-server": "^0.8.0",
+    "install": "^0.1.8",
+    "jest-cli": "^0.4.3",
+    "npm": "^2.14.1",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/app.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "serve": "http-server",
+    "test": "jest"
+  },
+  "author": "Bill Fisher",
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify",
+      "es6ify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./js"
+  }
+}
